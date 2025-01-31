@@ -12,7 +12,7 @@ while True:
     if k.is_pressed("enter"):
             image = gui.screenshot("hi.png", region=(355, 735, 620, 430))
             text = pytesseract.image_to_string("hi.png")
-            e = pipe("text")
+            e = pipe(text)
             if e["label"] == "NEG":
                 gui.alert("harmful intentions detected. sending torpedo now.")
     if k.is_pressed("`"):
