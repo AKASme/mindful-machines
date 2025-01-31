@@ -19,6 +19,7 @@ while True:
         break
 
 """
+The following license is for the use of Bertweet through HuggingFace Transformers.
 MIT License
 
 Copyright (c) 2020-2021 VinAI
