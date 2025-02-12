@@ -1,3 +1,3 @@
 # mindful-machines
 Incentive Science Fair, Part 2, Electric Boogaloo.
-ill copy the abstract here later i guess
+With the internet becoming perhaps the most popular way to communicate, we have seen social media being used for both positive and nefarious purposes. One type of offensive communication being used online is hate speech. Hate speech is significantly harder to prevent because it is hard to distinguish between hate speech and negative free speech. Thus, the belief that one could create a “Constitution of the Internet” of sorts is inherently hard to realize. To help in online moderation, we have created a program to automatically categorize messages based on their emotional parity, which we believe can be a helpful addition to traditional methods like blacklists.
