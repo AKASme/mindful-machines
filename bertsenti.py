@@ -1,25 +1,30 @@
 import torch
 from transformers import pipeline
 from PIL import Image
-import pytesseract
+import easyocr as ocr #because pytesseract is super annoying to use
 import pyautogui as gui
 import keyboard as k #because pyautogui can type but can't detect if a key is pressed????
-
+import time
 pipe = pipeline("text-classification", model="finiteautomata/bertweet-base-sentiment-analysis")
-pytesseract.pytesseract.tesseract_cmd = r'C:\Users\cheng\AppData\Local\Programs\Python\Python312\Lib\site-packages\pytesseract'
-#yes i have just exposed a portion of my computer's files. do i care? no. none of these matter
+reader = ocr.Reader(["en"])
+print("started")
 while True:
     if k.is_pressed("enter"):
-            image = gui.screenshot("hi.png", region=(355, 735, 620, 430))
-            text = pytesseract.image_to_string("hi.png")
-            e = pipe(text)
-            if e["label"] == "NEG":
+            print("enter pressed")
+            time.sleep(1)
+            gui.screenshot("hi.png", region=(758, 900, 410, 68))
+            text = reader.readtext("hi.png")
+            print(text)
+            e = pipe(text[0][-2]) #the reader return value is its bounding boxes, then the text, then its confidence
+            print(e)
+            if e[0]["label"] == "NEG":
                 gui.alert("harmful intentions detected. sending torpedo now.")
     if k.is_pressed("`"):
         break
 
 """
-The following license is for the use of Bertweet through HuggingFace Transformers.
+This is the license for Google's BERT model.
+
 MIT License
 
 Copyright (c) 2020-2021 VinAI
